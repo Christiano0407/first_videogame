@@ -1,3 +1,7 @@
+/* === Import CSS === */
+@import url(./src/css/btnStyle.css);
+
+/* === CSS General Design === */
 *,
 *::before,
 *::after {
