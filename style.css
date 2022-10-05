@@ -12,6 +12,11 @@
 
 body {
     width: 100%;
+    background-color: indigo;
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 ul {
@@ -32,4 +37,34 @@ img {
 p,
 span {
     letter-spacing: 0.1rem;
+}
+
+.game-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* === === CANVAS === == */
+canvas {
+    border: 4px solid #ff6600;
+    border-radius: 8px;
+    background-color: #feff9d;
+}
+
+.messages {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 460px;
+}
+
+p {
+    display: block;
+    margin: 0;
+    width: 100%;
 }
