@@ -39,7 +39,7 @@ span {
     letter-spacing: 0.1rem;
 }
 
-.game-container {
+.game__container {
     display: flex;
     align-items: center;
     justify-content: center;

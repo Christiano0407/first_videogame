@@ -12,7 +12,7 @@ button:not(:last-child) {
     margin-right: 10px;
 }
 
-.btn {
+.btns {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
