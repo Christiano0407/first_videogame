@@ -3,6 +3,9 @@ const canvas = document.querySelector(`#game`);
 const gameCtx = canvas.getContext("2d");
 let canvasSize;
 let elementSize;
+let map;
+let rowsMap;
+let colsMap;
 
 //*! === Example === */
 /* const startGame = () => {
@@ -47,6 +50,13 @@ const startGame = () => {
 
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
+
+  map = maps[0];
+  console.log(map);
+  rowsMap = maps[0].trim().split(`\n`);
+  console.log(rowsMap);
+  colsMap = rowsMap.map((row) => row.trim().split(" "));
+  console.log(colsMap);
 
   for (let row = 1; row <= 10; row++) {
     //console.log(i);
