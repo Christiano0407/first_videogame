@@ -23,8 +23,10 @@ let elementSize;
   }
 }; */
 
-//** === CANVAS === */
-const startGame = () => {
+//** ===  === === CANVAS === === === */
+
+//** === SetCanvasSizes */
+const SetCanvasSizes = () => {
   if (window.innerHeight > window.innerWidth) {
     canvasSize = window.innerWidth * 0.8;
   } else {
@@ -35,16 +37,26 @@ const startGame = () => {
   canvas.setAttribute("height", canvasSize);
 
   elementSize = canvasSize / 10;
+
+  startGame();
+};
+
+//** === Start Game */
+const startGame = () => {
   console.log({ canvasSize, elementSize });
 
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
 
-  for (let i = 1; i <= 10; i++) {
-    gameCtx.fillText(emojis["X"], elementSize * i, elementSize);
-    gameCtx.fillText(emojis["X"], elementSize, elementSize * i);
+  for (let row = 1; row <= 10; row++) {
+    //console.log(i);
+    for (let col = 1; col <= 10; col++) {
+      gameCtx.fillText(emojis["X"], elementSize * col + 10, elementSize * row);
+      //console.log(j);
+    }
   }
 };
 
-window.addEventListener("load", startGame);
-//window.addEventListener("resize", startGame);
+//*! === Windows */
+window.addEventListener("load", SetCanvasSizes);
+window.addEventListener("resize", SetCanvasSizes);
