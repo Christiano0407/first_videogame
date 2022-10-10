@@ -28,7 +28,7 @@ const startGame = () => {
   elementSize = canvasSize / 10;
   console.log({ canvasSize, elementSize });
 
-  gameCtx.font = elementSize + "px Verdana";
+  gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
 
   for (let i = 1; i <= 10; i++) {
