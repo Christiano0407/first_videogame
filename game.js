@@ -14,6 +14,15 @@ let elementSize;
 };
  */
 
+//*! Responsive */
+/* const responsive = () => {
+  if (window.innerHeight < 768 || window.innerHeight < 1024) {
+    canvasSize = window.innerWidth * 0.8;
+  } else {
+    canvasSize = window.innerHeight * 0.8;
+  }
+}; */
+
 //** === CANVAS === */
 const startGame = () => {
   if (window.innerHeight > window.innerWidth) {
@@ -36,4 +45,6 @@ const startGame = () => {
     gameCtx.fillText(emojis["X"], elementSize, elementSize * i);
   }
 };
+
 window.addEventListener("load", startGame);
+//window.addEventListener("resize", startGame);
