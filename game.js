@@ -51,9 +51,9 @@ const startGame = () => {
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
 
-  map = maps[0];
+  map = maps[2];
   rowsMap = map.trim().split("\n");
-  colsMap = rowsMap.map((i) => i.trim().split(""));
+  colsMap = rowsMap.map((i) => i.trim().split(``));
   console.log({ map, rowsMap, colsMap });
 
   for (let i = 1; i <= 10; i++) {
