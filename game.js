@@ -53,20 +53,32 @@ const startGame = () => {
 
   map = maps[0];
   rowsMap = map.trim().split("\n");
-  colsMap = rowsMap.map((i) => i.trim().split(``));
+  colsMap = rowsMap.map((row) => row.trim().split(``));
   console.log({ map, rowsMap, colsMap });
 
-  for (let i = 1; i <= 10; i++) {
-    //console.log(i);
+  // 1) == Method 01 CicFor ===
+  /*  for (let i = 1; i <= 10; i++) {
+    
     for (let j = 1; j <= 10; j++) {
       gameCtx.fillText(
         emojis[colsMap[i - 1][j - 1]],
         elementSize * j,
         elementSize * i
       );
-      //console.log(emojis); / - 1 => 0
+      
     }
-  }
+  } */
+  // ===  2) Method Array Array ===
+  colsMap.forEach((row, rowIndex) => {
+    row.forEach((col, colIndex) => {
+      const emoji = emojis[col];
+      const posX = elementSize * (colIndex + 1);
+      const posY = elementSize * (rowIndex + 1);
+
+      gameCtx.fillText(emoji, posX, posY);
+      //console.log({ row,rowIndex,  col, colIndex });
+    });
+  });
 };
 //** i ==> ROW / J ==> Col */
 
