@@ -3,9 +3,9 @@ const canvas = document.querySelector(`#game`);
 const gameCtx = canvas.getContext("2d");
 let canvasSize;
 let elementSize;
-/* let map;
+let map;
 let rowsMap;
-let colsMap; */
+let colsMap;
 
 //*! === Example === */
 /* const startGame = () => {
@@ -51,23 +51,24 @@ const startGame = () => {
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
 
-  const map = maps[0];
-  const rowsMap = map.trim().split("\n");
-  const colsMap = rowsMap.map((row) => row.trim().split(" "));
+  map = maps[0];
+  rowsMap = map.trim().split("\n");
+  colsMap = rowsMap.map((i) => i.trim().split(""));
   console.log({ map, rowsMap, colsMap });
 
-  for (let row = 1; row <= 10; row++) {
+  for (let i = 1; i <= 10; i++) {
     //console.log(i);
-    for (let col = 1; col <= 10; col++) {
+    for (let j = 1; j <= 10; j++) {
       gameCtx.fillText(
-        emojis[colsMap[row - 1][col - 1]],
-        elementSize * col,
-        elementSize * row
+        emojis[colsMap[i - 1][j - 1]],
+        elementSize * j,
+        elementSize * i
       );
-      //console.log(j);
+      //console.log(emojis);
     }
   }
 };
+//** i ==> ROW / J ==> Col */
 
 //*! === Windows */
 window.addEventListener("load", SetCanvasSizes);
