@@ -12,6 +12,10 @@ button:not(:last-child) {
     margin-right: 10px;
 }
 
+button:is(:active) {
+    transform: scale(0.9);
+}
+
 .btns {
     display: flex;
     justify-content: center;

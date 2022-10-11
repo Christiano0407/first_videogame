@@ -1,6 +1,10 @@
 //*TODO === === === Games === === === === */
 const canvas = document.querySelector(`#game`);
 const gameCtx = canvas.getContext("2d");
+const btnUp = document.querySelector("#up");
+const btnLeft = document.querySelector("#left");
+const btnRight = document.querySelector("#right");
+const btnDown = document.querySelector("#down");
 let canvasSize;
 let elementSize;
 let map;
@@ -80,8 +84,35 @@ const startGame = () => {
     });
   });
 };
-//** i ==> ROW / J ==> Col */
+//*! i ==> ROW / J ==> Col */
 
-//*! === Windows */
+//** === ===  Event Buttons === === */
+window.addEventListener("keydown", moveByKeys);
+
+function moveByKeys(e) {
+  console.log(e);
+}
+
+function moveUp() {
+  console.log("Top");
+}
+btnUp.addEventListener("mouseup", moveUp);
+
+function moveLeft() {
+  console.log("Left");
+}
+btnLeft.addEventListener(`click`, moveLeft);
+
+function moveRight() {
+  console.log("Right");
+}
+btnRight.addEventListener("click", moveRight);
+
+function moveDown() {
+  console.log("Down");
+}
+btnDown.addEventListener("click", moveDown);
+
+//** === Windows Load & Size === */
 window.addEventListener("load", SetCanvasSizes);
 window.addEventListener("resize", SetCanvasSizes);
