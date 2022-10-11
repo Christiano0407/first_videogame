@@ -51,7 +51,7 @@ const startGame = () => {
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
 
-  map = maps[2];
+  map = maps[0];
   rowsMap = map.trim().split("\n");
   colsMap = rowsMap.map((i) => i.trim().split(``));
   console.log({ map, rowsMap, colsMap });
@@ -64,7 +64,7 @@ const startGame = () => {
         elementSize * j,
         elementSize * i
       );
-      //console.log(emojis);
+      //console.log(emojis); / - 1 => 0
     }
   }
 };
