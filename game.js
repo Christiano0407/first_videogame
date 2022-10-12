@@ -23,7 +23,10 @@ const giftPosition = {
   y: undefined,
 };
 
-//*! === Example === */
+//*! === Position Enemy */
+let enemyPosition = [];
+
+//*? === Example === */
 /* const startGame = () => {
   gameCtx.fillRect(0, 0, 100, 100);
   gameCtx.clearRect(50, 50, 50, 50);
@@ -33,7 +36,7 @@ const giftPosition = {
 };
  */
 
-//*! Responsive */
+//*? Responsive */
 /* const responsive = () => {
   if (window.innerHeight < 768 || window.innerHeight < 1024) {
     canvasSize = window.innerWidth * 0.8;
@@ -70,6 +73,8 @@ const startGame = () => {
   colsMap = rowsMap.map((row) => row.trim().split(``));
 
   // === Clear Canvas ===
+  enemyPosition = [];
+  console.log(enemyPosition);
   gameCtx.clearRect(0, 0, canvasSize, canvasSize);
 
   // 1) == Method 01 CicFor ===
@@ -106,6 +111,13 @@ const startGame = () => {
         console.log(giftPosition);
       }
 
+      if (col === "X") {
+        enemyPosition.push({
+          x: posX,
+          y: posY,
+        });
+      }
+
       gameCtx.fillText(emoji, posX, posY);
       //console.log({ row,rowIndex,  col, colIndex });
     });
@@ -122,6 +134,16 @@ const movePlayer = () => {
 
   if (positionPlusCollision) {
     console.log("Collision! & Next Level");
+  }
+
+  const enemiesCollision = enemyPosition.find((enemy) => {
+    const collisionEnemyX = enemy.x.toFixed(3) == playerOne.x.toFixed(3);
+    const collisionEnemyY = enemy.y.toFixed(3) == playerOne.y.toFixed(3);
+    return collisionEnemyX && collisionEnemyY;
+  });
+
+  if (enemiesCollision) {
+    console.log("Crash!!");
   }
 
   gameCtx.fillText(emojis["PLAYER"], playerOne.x, playerOne.y);
