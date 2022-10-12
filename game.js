@@ -124,30 +124,48 @@ function moveByKeys(e) {
 }
 
 const moveUp = () => {
-  console.log("Top");
-  playerOne.y -= elementSize;
-  startGame();
+  console.log("Top & Up");
+
+  if (playerOne.y <= elementSize + 1) {
+    console.log("Not move", playerOne.y, elementSize);
+  } else {
+    console.log("Moving");
+    playerOne.y -= elementSize;
+    startGame();
+  }
 };
 btnUp.addEventListener("click", moveUp);
 
 const moveLeft = () => {
   console.log("Left");
-  playerOne.x -= elementSize;
-  startGame();
+  if (playerOne.x <= elementSize + 1) {
+    console.log("Not move", playerOne.x, elementSize);
+  } else {
+    playerOne.x -= elementSize;
+    startGame();
+  }
 };
 btnLeft.addEventListener(`click`, moveLeft);
 
 const moveRight = () => {
   console.log("Right");
-  playerOne.x += elementSize;
-  startGame();
+  if (playerOne.x >= elementSize) {
+    console.log("Not move", playerOne.x, elementSize);
+  } else {
+    playerOne.x += elementSize;
+    startGame();
+  }
 };
 btnRight.addEventListener("click", moveRight);
 
 const moveDown = () => {
   console.log("Down");
-  playerOne.y += elementSize;
-  startGame();
+  if (playerOne.y >= elementSize) {
+    console.log("Not move", playerOne.y, elementSize);
+  } else {
+    playerOne.y += elementSize;
+    startGame();
+  }
 };
 btnDown.addEventListener("click", moveDown);
 
