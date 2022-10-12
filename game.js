@@ -11,7 +11,14 @@ let map;
 let rowsMap;
 let colsMap;
 
+//*! === Position Player */
 const playerOne = {
+  x: undefined,
+  y: undefined,
+};
+
+//*! === Position Gift */
+const giftPosition = {
   x: undefined,
   y: undefined,
 };
@@ -93,6 +100,12 @@ const startGame = () => {
         }
       }
 
+      if (col === "I") {
+        giftPosition.x = posX;
+        giftPosition.y = posY;
+        console.log(giftPosition);
+      }
+
       gameCtx.fillText(emoji, posX, posY);
       //console.log({ row,rowIndex,  col, colIndex });
     });
@@ -101,7 +114,16 @@ const startGame = () => {
 };
 //*! i ==> ROW / J ==> Col */
 
+//** === Move Player */
 const movePlayer = () => {
+  const positionX = playerOne.x.toFixed(3) == giftPosition.x.toFixed(3);
+  const positionY = playerOne.y.toFixed(3) == giftPosition.y.toFixed(3);
+  const positionPlusCollision = positionX && positionY; // TRUE
+
+  if (positionPlusCollision) {
+    console.log("Collision! & Next Level");
+  }
+
   gameCtx.fillText(emojis["PLAYER"], playerOne.x, playerOne.y);
 };
 
