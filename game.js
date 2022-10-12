@@ -11,6 +11,11 @@ let map;
 let rowsMap;
 let colsMap;
 
+const playerOne = {
+  x: undefined,
+  y: undefined,
+};
+
 //*! === Example === */
 /* const startGame = () => {
   gameCtx.fillRect(0, 0, 100, 100);
@@ -79,14 +84,26 @@ const startGame = () => {
       const posX = elementSize * (colIndex + 1);
       const posY = elementSize * (rowIndex + 1);
 
+      if (col === "O") {
+        console.log({ posX, posY });
+        playerOne.x = posX;
+        playerOne.y = posY;
+        console.log(playerOne);
+      }
+
       gameCtx.fillText(emoji, posX, posY);
       //console.log({ row,rowIndex,  col, colIndex });
     });
   });
+  movePlayer();
 };
 //*! i ==> ROW / J ==> Col */
 
-//** === ===  Event Buttons === === */
+const movePlayer = () => {
+  gameCtx.fillText(emojis["PLAYER"], playerOne.x, playerOne.y);
+};
+
+//** === ===  Event Buttons & Move === === */
 function moveByKeys(e) {
   console.log(e);
 
@@ -106,8 +123,10 @@ function moveByKeys(e) {
 
 const moveUp = () => {
   console.log("Top");
+  playerOne.y -= elementSize;
+  movePlayer();
 };
-btnUp.addEventListener("mouseup", moveUp);
+btnUp.addEventListener("click", moveUp);
 
 const moveLeft = () => {
   console.log("Left");
@@ -124,7 +143,7 @@ const moveDown = () => {
 };
 btnDown.addEventListener("click", moveDown);
 
-//** === Windows Load & Size === */
+//** === === === Windows Load & Size === === === */
 window.addEventListener("load", SetCanvasSizes);
 window.addEventListener("resize", SetCanvasSizes);
 window.addEventListener("keydown", moveByKeys);
