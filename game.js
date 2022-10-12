@@ -55,7 +55,7 @@ const SetCanvasSizes = () => {
 
 //** === Start Game */
 const startGame = () => {
-  console.log({ canvasSize, elementSize });
+  //console.log({ canvasSize, elementSize });
 
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
@@ -63,7 +63,10 @@ const startGame = () => {
   map = maps[0];
   rowsMap = map.trim().split("\n");
   colsMap = rowsMap.map((row) => row.trim().split(``));
-  console.log({ map, rowsMap, colsMap });
+  //console.log({ map, rowsMap, colsMap });
+
+  // === Clear Canvas ===
+  gameCtx.clearRect(0, 0, canvasSize, canvasSize);
 
   // 1) == Method 01 CicFor ===
   /*  for (let i = 1; i <= 10; i++) {
@@ -85,10 +88,12 @@ const startGame = () => {
       const posY = elementSize * (rowIndex + 1);
 
       if (col === "O") {
-        console.log({ posX, posY });
-        playerOne.x = posX;
-        playerOne.y = posY;
-        console.log(playerOne);
+        if (!playerOne.x && !playerOne.y) {
+          console.log({ posX, posY });
+          playerOne.x = posX;
+          playerOne.y = posY;
+          console.log(playerOne);
+        }
       }
 
       gameCtx.fillText(emoji, posX, posY);
@@ -124,7 +129,7 @@ function moveByKeys(e) {
 const moveUp = () => {
   console.log("Top");
   playerOne.y -= elementSize;
-  movePlayer();
+  startGame();
 };
 btnUp.addEventListener("click", moveUp);
 
