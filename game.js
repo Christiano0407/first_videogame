@@ -55,15 +55,12 @@ const SetCanvasSizes = () => {
 
 //** === Start Game */
 const startGame = () => {
-  //console.log({ canvasSize, elementSize });
-
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
 
   map = maps[0];
   rowsMap = map.trim().split("\n");
   colsMap = rowsMap.map((row) => row.trim().split(``));
-  //console.log({ map, rowsMap, colsMap });
 
   // === Clear Canvas ===
   gameCtx.clearRect(0, 0, canvasSize, canvasSize);
@@ -135,16 +132,22 @@ btnUp.addEventListener("click", moveUp);
 
 const moveLeft = () => {
   console.log("Left");
+  playerOne.x -= elementSize;
+  startGame();
 };
 btnLeft.addEventListener(`click`, moveLeft);
 
 const moveRight = () => {
   console.log("Right");
+  playerOne.x += elementSize;
+  startGame();
 };
 btnRight.addEventListener("click", moveRight);
 
 const moveDown = () => {
   console.log("Down");
+  playerOne.y += elementSize;
+  startGame();
 };
 btnDown.addEventListener("click", moveDown);
 
