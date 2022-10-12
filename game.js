@@ -87,32 +87,44 @@ const startGame = () => {
 //*! i ==> ROW / J ==> Col */
 
 //** === ===  Event Buttons === === */
-window.addEventListener("keydown", moveByKeys);
-
 function moveByKeys(e) {
   console.log(e);
+
+  if (e.key === "ArrowUp") {
+    moveUp();
+  }
+  if (e.key === "ArrowRight") {
+    moveRight();
+  }
+  if (e.key === "ArrowLeft") {
+    moveLeft();
+  }
+  if (e.key === "ArrowDown") {
+    moveDown();
+  }
 }
 
-function moveUp() {
+const moveUp = () => {
   console.log("Top");
-}
+};
 btnUp.addEventListener("mouseup", moveUp);
 
-function moveLeft() {
+const moveLeft = () => {
   console.log("Left");
-}
+};
 btnLeft.addEventListener(`click`, moveLeft);
 
-function moveRight() {
+const moveRight = () => {
   console.log("Right");
-}
+};
 btnRight.addEventListener("click", moveRight);
 
-function moveDown() {
+const moveDown = () => {
   console.log("Down");
-}
+};
 btnDown.addEventListener("click", moveDown);
 
 //** === Windows Load & Size === */
 window.addEventListener("load", SetCanvasSizes);
 window.addEventListener("resize", SetCanvasSizes);
+window.addEventListener("keydown", moveByKeys);
