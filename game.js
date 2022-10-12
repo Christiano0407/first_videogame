@@ -146,12 +146,10 @@ function moveByKeys(e) {
 }
 
 const moveUp = () => {
-  console.log("Top & Up");
-
-  if (playerOne.y - elementSize < elementSize) {
+  console.log("Up");
+  if (playerOne.y <= elementSize) {
     console.log("Not move Out Up");
   } else {
-    console.log("Moving");
     playerOne.y -= elementSize;
     startGame();
   }
