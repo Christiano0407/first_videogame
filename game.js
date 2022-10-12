@@ -126,8 +126,8 @@ function moveByKeys(e) {
 const moveUp = () => {
   console.log("Top & Up");
 
-  if (playerOne.y <= elementSize + 1) {
-    console.log("Not move", playerOne.y, elementSize);
+  if (playerOne.y - elementSize < elementSize) {
+    console.log("Not move Out Up");
   } else {
     console.log("Moving");
     playerOne.y -= elementSize;
@@ -138,8 +138,8 @@ btnUp.addEventListener("click", moveUp);
 
 const moveLeft = () => {
   console.log("Left");
-  if (playerOne.x <= elementSize + 1) {
-    console.log("Not move", playerOne.x, elementSize);
+  if (playerOne.x - elementSize < elementSize) {
+    console.log("Not move Out Left");
   } else {
     playerOne.x -= elementSize;
     startGame();
@@ -149,8 +149,8 @@ btnLeft.addEventListener(`click`, moveLeft);
 
 const moveRight = () => {
   console.log("Right");
-  if (playerOne.x >= elementSize) {
-    console.log("Not move", playerOne.x, elementSize);
+  if (playerOne.x + elementSize > canvasSize) {
+    console.log("Not move Out Right");
   } else {
     playerOne.x += elementSize;
     startGame();
@@ -160,8 +160,8 @@ btnRight.addEventListener("click", moveRight);
 
 const moveDown = () => {
   console.log("Down");
-  if (playerOne.y >= elementSize) {
-    console.log("Not move", playerOne.y, elementSize);
+  if (playerOne.y + elementSize > canvasSize) {
+    console.log("Not move Out Down");
   } else {
     playerOne.y += elementSize;
     startGame();
