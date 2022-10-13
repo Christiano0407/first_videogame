@@ -5,6 +5,7 @@ const btnUp = document.querySelector("#up");
 const btnLeft = document.querySelector("#left");
 const btnRight = document.querySelector("#right");
 const btnDown = document.querySelector("#down");
+const spanMessage = document.querySelector("#spanMessage");
 let canvasSize;
 let elementSize;
 let map;
@@ -84,6 +85,8 @@ const startGame = () => {
   enemyPosition = [];
   console.log(enemyPosition);
   gameCtx.clearRect(0, 0, canvasSize, canvasSize);
+
+  showLifes();
 
   // 1) == Method 01 CicFor ===
   /*  for (let i = 1; i <= 10; i++) {
@@ -166,9 +169,9 @@ const levelWin = () => {
 //** === Crash Collision */
 const levelCrash = () => {
   console.log("Crash!!");
-
   lifes--;
   //console.log(lifes);
+
   if (lifes <= 0) {
     lifes = 0;
     lifes = 3;
@@ -176,6 +179,15 @@ const levelCrash = () => {
   playerOne.x = undefined;
   playerOne.y = undefined;
   startGame();
+};
+
+//** === Show Lifes */
+const showLifes = () => {
+  const heartsArray = Array(lifes).fill(emojis["Heart"]);
+  //spanMessage.innerHTML = heartsArray;
+  //heartsArray.forEach((heart) => (spanMessage.innerHTML = heart));
+  spanMessage.innerHTML = "";
+  heartsArray.forEach((heart) => spanMessage.append(heart));
 };
 //** === Win Game */
 const winGame = () => {

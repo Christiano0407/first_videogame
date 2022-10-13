@@ -13,6 +13,7 @@ const emojis = {
   BOMB_COLLISION: "🔥",
   GAME_OVER: "👎",
   WIN: "🏆",
+  Heart: "❤",
 };
 
 const maps = [];
