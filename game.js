@@ -11,6 +11,7 @@ let map;
 let rowsMap;
 let colsMap;
 let level = 0;
+let lifes = 3;
 
 //*! === Position Player */
 const playerOne = {
@@ -151,7 +152,7 @@ const movePlayer = () => {
   });
 
   if (enemiesCollision) {
-    console.log("Crash!!");
+    levelCrash();
   }
 
   gameCtx.fillText(emojis["PLAYER"], playerOne.x, playerOne.y);
@@ -162,6 +163,20 @@ const levelWin = () => {
   startGame();
 };
 
+//** === Crash Collision */
+const levelCrash = () => {
+  console.log("Crash!!");
+
+  lifes--;
+  //console.log(lifes);
+  if (lifes <= 0) {
+    lifes = 0;
+    lifes = 3;
+  }
+  playerOne.x = undefined;
+  playerOne.y = undefined;
+  startGame();
+};
 //** === Win Game */
 const winGame = () => {
   console.log("You Win!!");
