@@ -70,7 +70,7 @@ const startGame = () => {
   gameCtx.textAlign = "end";
 
   map = maps[level];
-  // => Not more levels & return startGame!
+  // => Not more levels == true & return startGame!
   if (!map) {
     winGame();
     return;
