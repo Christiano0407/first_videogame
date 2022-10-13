@@ -6,6 +6,10 @@ const btnLeft = document.querySelector("#left");
 const btnRight = document.querySelector("#right");
 const btnDown = document.querySelector("#down");
 const spanMessage = document.querySelector("#spanMessage");
+const timer = document.querySelector("#idTimer");
+const timerHr = document.querySelector("#timerHour");
+const timerMin = document.querySelector("#timerMinute");
+const timerSec = document.querySelector("#timerSecond");
 let canvasSize;
 let elementSize;
 let map;
@@ -86,7 +90,10 @@ const startGame = () => {
   console.log(enemyPosition);
   gameCtx.clearRect(0, 0, canvasSize, canvasSize);
 
+  // === Lifes
   showLifes();
+  // === Time
+  /* showTimer(); */
 
   // 1) == Method 01 CicFor ===
   /*  for (let i = 1; i <= 10; i++) {
@@ -183,12 +190,15 @@ const levelCrash = () => {
 
 //** === Show Lifes */
 const showLifes = () => {
-  const heartsArray = Array(lifes).fill(emojis["Heart"]);
+  const heartsArray = Array(lifes).fill(emojis["Heart"]); //> Super Array
   //spanMessage.innerHTML = heartsArray;
   //heartsArray.forEach((heart) => (spanMessage.innerHTML = heart));
-  spanMessage.innerHTML = "";
+  spanMessage.innerHTML = ""; // => Clear Before
   heartsArray.forEach((heart) => spanMessage.append(heart));
 };
+//** === Timer */
+/* const showTimer = (ms) => {
+} */
 //** === Win Game */
 const winGame = () => {
   console.log("You Win!!");

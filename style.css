@@ -59,18 +59,18 @@ canvas {
 .messages {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 1rem auto;
     width: 80%;
     max-width: 460px;
 }
 
 p {
     display: block;
-    margin: 0;
+    margin: 1rem auto;
     width: 100%;
 }
 
-.span_Mesage {
-    font-size: 2.4rem;
+.span_message {
+    font-size: 2rem;
     color: red;
 }
