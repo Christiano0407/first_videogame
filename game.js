@@ -10,6 +10,7 @@ let elementSize;
 let map;
 let rowsMap;
 let colsMap;
+let level = 0;
 
 //*! === Position Player */
 const playerOne = {
@@ -68,7 +69,13 @@ const startGame = () => {
   gameCtx.font = `${elementSize}px Verdana`;
   gameCtx.textAlign = "end";
 
-  map = maps[0];
+  map = maps[level];
+  // => Not more levels & return startGame!
+  if (!map) {
+    winGame();
+    return;
+  }
+
   rowsMap = map.trim().split("\n");
   colsMap = rowsMap.map((row) => row.trim().split(``));
 
@@ -98,7 +105,7 @@ const startGame = () => {
 
       if (col === "O") {
         if (!playerOne.x && !playerOne.y) {
-          console.log({ posX, posY });
+          //console.log({ posX, posY });
           playerOne.x = posX;
           playerOne.y = posY;
           console.log(playerOne);
@@ -133,7 +140,8 @@ const movePlayer = () => {
   const positionPlusCollision = positionX && positionY; // TRUE
 
   if (positionPlusCollision) {
-    console.log("Collision! & Next Level");
+    console.log("Up Next Level");
+    levelWin();
   }
 
   const enemiesCollision = enemyPosition.find((enemy) => {
@@ -147,6 +155,16 @@ const movePlayer = () => {
   }
 
   gameCtx.fillText(emojis["PLAYER"], playerOne.x, playerOne.y);
+};
+//** === Level Win */
+const levelWin = () => {
+  level++;
+  startGame();
+};
+
+//** === Win Game */
+const winGame = () => {
+  console.log("You Win!!");
 };
 
 //** === ===  Event Buttons & Move === === */
