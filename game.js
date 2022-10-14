@@ -219,6 +219,21 @@ const showTimer = () => {
 const winGame = () => {
   console.log("You Win!!");
   clearInterval(timeInterval);
+
+  const recordTime = localStorage.getItem(`record_time`);
+  const playerTime = Date.now() - timeStart;
+
+  if (recordTime) {
+    if (recordTime >= playerTime) {
+      localStorage.setItem(`record_time`, playerTime);
+      console.log("Congratulation! New Record!");
+    } else {
+      console.log("Your Lose!:( New Opportunity");
+    }
+  } else {
+    localStorage.setItem("record_time", playerTime);
+  }
+  console.log({ recordTime, playerTime });
 };
 
 //** === ===  Event Buttons & Move === === */
