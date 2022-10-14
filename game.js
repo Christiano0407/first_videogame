@@ -6,7 +6,7 @@ const btnLeft = document.querySelector("#left");
 const btnRight = document.querySelector("#right");
 const btnDown = document.querySelector("#down");
 const spanMessage = document.querySelector("#spanMessage");
-const timer = document.querySelector("#idTimer");
+const spanTimer = document.querySelector("#idTimer");
 const timerHr = document.querySelector("#timerHour");
 const timerMin = document.querySelector("#timerMinute");
 const timerSec = document.querySelector("#timerSecond");
@@ -197,8 +197,28 @@ const showLifes = () => {
   heartsArray.forEach((heart) => spanMessage.append(heart));
 };
 //** === Timer */
-/* const showTimer = (ms) => {
-} */
+const time = new Date();
+console.log(time);
+const timeStart = Date.now();
+console.log(timeStart);
+const sec = 1000;
+const min = sec * 60;
+const hr = min * 60;
+
+const showTimer = (ms) => {
+  const timerSpan = `${ms}` - time;
+  console.log(timerSpan);
+
+  /*  if (timerSpan <= 0) {
+    spanTimer = undefined;
+    startGame();
+  } */
+
+  spanTimer.innerHTML = `${timerHr}:${timerMin}:${timerSec}`;
+};
+
+//setInterval(showTimer, sec, 180000);
+
 //** === Win Game */
 const winGame = () => {
   console.log("You Win!!");
