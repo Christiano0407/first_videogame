@@ -11,6 +11,8 @@ const idNewTime = document.getElementById("idSpanTimer");
 const timerHr = document.querySelector("#timerHour");
 const timerMin = document.querySelector("#timerMinute");
 const timerSec = document.querySelector("#timerSecond");
+const record = document.querySelector("#recordTime");
+const result = document.querySelector("#resultTime");
 const sec = 1000;
 const min = sec * 60;
 const hr = min * 60;
@@ -103,6 +105,7 @@ const startGame = () => {
   if (!timeStart) {
     timeStart = Date.now();
     timeInterval = setInterval(showTimer, 100);
+    showRecord();
   }
 
   // 1) == Method 01 CicFor ===
@@ -214,6 +217,10 @@ const showLifes = () => {
 const showTimer = () => {
   idNewTime.innerHTML = Date.now() - timeStart;
 };
+//** === Record */
+const showRecord = () => {
+  record.innerHTML = localStorage.getItem(`record_time`);
+};
 
 //** === Win Game */
 const winGame = () => {
@@ -226,9 +233,9 @@ const winGame = () => {
   if (recordTime) {
     if (recordTime >= playerTime) {
       localStorage.setItem(`record_time`, playerTime);
-      console.log("Congratulation! New Record!");
+      result.innerHTML = "Congratulation! New Record!";
     } else {
-      console.log("Your Lose!:( New Opportunity");
+      result.innerHTML = "Your Lose!:( New Opportunity";
     }
   } else {
     localStorage.setItem("record_time", playerTime);
