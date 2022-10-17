@@ -1,6 +1,6 @@
 //** === Video Game Javascript ===  */
 const canvas = document.querySelector(`#game`);
-const game = canvas.getContext(`2d`);
+const gameCTX = canvas.getContext(`2d`);
 
 const startGame = () => {};
 
