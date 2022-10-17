@@ -9,7 +9,7 @@
 
 body {
     width: 100%;
-    background-color: #f4f4f4;
+    background-color: purple;
     color: #fff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
@@ -71,6 +71,12 @@ button:is(:active) {
     flex-wrap: wrap;
     height: 100vh;
     width: 100vw;
+}
+
+.title-game {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f2f2f2;
 }
 
 /* === === CANVAS === == */
