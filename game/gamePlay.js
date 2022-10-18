@@ -15,9 +15,11 @@ const startGame = () => {
   canvas.setAttribute("height", canvasSize);
 
   elementSize = canvasSize / 10;
-  console.log(elementSize);
+
   gameCTX.font = elementSize + "px Arial";
   gameCTX.textAlign = "end";
+  /*  for (let i = 1; i <= 10; i++) {
+} */
   gameCTX.fillText(emojis["X"], elementSize, elementSize);
 };
 
