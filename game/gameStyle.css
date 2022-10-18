@@ -73,6 +73,14 @@ button:is(:active) {
     width: 100vw;
 }
 
+.main-title {
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title-game {
     font-size: 3rem;
     font-weight: bold;
