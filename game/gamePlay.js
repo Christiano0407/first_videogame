@@ -47,8 +47,8 @@ const startGame = () => {
 
       const emoji = emojis[col];
       //console.log(emoji);
-      const posX = elementSize * (rowInd + 1);
-      const posY = elementSize * (colInd + 1);
+      const posX = elementSize * (colInd + 1);
+      const posY = elementSize * (rowInd + 1);
 
       if (col === "O") {
         playerPosition.x = posX;
@@ -56,10 +56,10 @@ const startGame = () => {
         console.log({ playerPosition });
       }
 
-      gameCTX.fillText(emoji, posY, posX);
+      gameCTX.fillText(emoji, posX, posY);
     });
   });
-  gameCTX.fillText(emojis["PLAYER"], playerPosition.y, playerPosition.x);
+  movePlayer();
   // === Cic For ===
   /* for (let row = 1; row <= 10; row++) {
     for (let col = 1; col <= 10; col++) {
@@ -70,6 +70,10 @@ const startGame = () => {
       );
     }
   } */
+};
+
+const movePlayer = () => {
+  gameCTX.fillText(emojis["PLAYER"], playerPosition.x, playerPosition.y);
 };
 
 const eventClick = (e) => {
@@ -90,6 +94,8 @@ const eventClick = (e) => {
 
 const moveUp = () => {
   console.log("UpOn!");
+  playerPosition.y -= elementSize;
+  movePlayer();
 };
 btnUp.addEventListener("ArrowUp", moveUp);
 
