@@ -6,13 +6,17 @@ const btnRight = document.querySelector("#right");
 const btnLeft = document.querySelector("#left");
 const btnUp = document.querySelector("#up");
 const btnDown = document.querySelector("#down");
+const playerPosition = {
+  x: undefined,
+  y: undefined,
+};
 let canvasSize;
 let elementSize;
 let map;
 let rowMap;
 let colMap;
 
-//*! === === === === CODE === === === === */
+//*! === === === === CODE === === === ===  === === === VideoGame === */
 
 const setCanvasSize = () => {
   window.innerHeight > window.innerWidth
@@ -40,13 +44,22 @@ const startGame = () => {
   colMap.forEach((row, rowInd) => {
     row.forEach((col, colInd) => {
       //console.log({ row, col, rowInd, colInd });
+
       const emoji = emojis[col];
       //console.log(emoji);
       const posX = elementSize * (rowInd + 1);
       const posY = elementSize * (colInd + 1);
+
+      if (col === "O") {
+        playerPosition.x = posX;
+        playerPosition.y = posY;
+        console.log({ playerPosition });
+      }
+
       gameCTX.fillText(emoji, posY, posX);
     });
   });
+  gameCTX.fillText(emojis["PLAYER"], playerPosition.y, playerPosition.x);
   // === Cic For ===
   /* for (let row = 1; row <= 10; row++) {
     for (let col = 1; col <= 10; col++) {
@@ -61,22 +74,39 @@ const startGame = () => {
 
 const eventClick = (e) => {
   console.log(e);
-  e.key === "ArrowUp" ? upOn() : console.log("Error");
+  if (e.key === "ArrowUp") {
+    moveUp();
+  }
+  if (e.key === "ArrowLeft") {
+    moveLeft();
+  }
+  if (e.key === "ArrowRight") {
+    moveRight();
+  }
+  if (e.key === "ArrowDown") {
+    moveDown();
+  }
 };
 
-const upOn = () => {
+const moveUp = () => {
   console.log("UpOn!");
 };
-btnUp.addEventListener("click", upOn);
+btnUp.addEventListener("ArrowUp", moveUp);
 
-const leftOn = () => {};
-btnLeft.addEventListener("click", leftOn);
+const moveLeft = () => {
+  console.log("Left");
+};
+btnLeft.addEventListener("click", moveLeft);
 
-const rightOn = () => {};
-btnRight.addEventListener("click", rightOn);
+const moveRight = () => {
+  console.log("Right");
+};
+btnRight.addEventListener("click", moveRight);
 
-const downOn = () => {};
-btnDown.addEventListener("click", downOn);
+const moveDown = () => {
+  console.log("Down");
+};
+btnDown.addEventListener("click", moveDown);
 //*? === === === Load Window === === ===  */
 window.addEventListener("resize", setCanvasSize);
 window.addEventListener("load", setCanvasSize);
