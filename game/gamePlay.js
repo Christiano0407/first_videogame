@@ -40,6 +40,7 @@ const startGame = () => {
   colMap = rowMap.map((row) => row.trim().split(""));
   console.log({ map, rowMap, colMap });
 
+  gameCTX.clearRect(0, 0, canvasSize, canvasSize);
   // === Method ==
   colMap.forEach((row, rowInd) => {
     row.forEach((col, colInd) => {
@@ -51,9 +52,11 @@ const startGame = () => {
       const posY = elementSize * (rowInd + 1);
 
       if (col === "O") {
-        playerPosition.x = posX;
-        playerPosition.y = posY;
-        console.log({ playerPosition });
+        if (!playerPosition.x && !playerPosition.y) {
+          playerPosition.x = posX;
+          playerPosition.y = posY;
+          // console.log({ playerPosition });
+        }
       }
 
       gameCTX.fillText(emoji, posX, posY);
@@ -95,22 +98,28 @@ const eventClick = (e) => {
 const moveUp = () => {
   console.log("UpOn!");
   playerPosition.y -= elementSize;
-  movePlayer();
+  startGame();
 };
 btnUp.addEventListener("ArrowUp", moveUp);
 
 const moveLeft = () => {
   console.log("Left");
+  playerPosition.x -= elementSize;
+  startGame();
 };
 btnLeft.addEventListener("click", moveLeft);
 
 const moveRight = () => {
   console.log("Right");
+  playerPosition.x += elementSize;
+  startGame();
 };
 btnRight.addEventListener("click", moveRight);
 
 const moveDown = () => {
   console.log("Down");
+  playerPosition.y += elementSize;
+  startGame();
 };
 btnDown.addEventListener("click", moveDown);
 //*? === === === Load Window === === ===  */
