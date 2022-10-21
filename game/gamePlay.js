@@ -19,9 +19,9 @@ let elementSize;
 let map;
 let rowMap;
 let colMap;
-let positionOnX;
-let positionOnY;
-let bothPosition;
+let collPosOnX;
+let collPosOnY;
+let bothCollPosition;
 
 //*TODO === === === === CODE === === === ===  === === === VideoGame === */
 
@@ -91,11 +91,12 @@ const startGame = () => {
 
 const movePlayer = () => {
   gameCTX.fillText(emojis["PLAYER"], playerPosition.x, playerPosition.y);
-  positionOnX = playerPosition.x + giftPosition.x;
-  positionOnY = playerPosition.y + giftPosition.y;
-  bothPosition = positionOnX + positionOnY;
+  collPosOnX = playerPosition.x.toFixed(3) === giftPosition.x.toFixed(3);
+  collPosOnY = playerPosition.y.toFixed(3) === giftPosition.y.toFixed(3);
 
-  bothPosition ? console.log("Collision") : console.log("Error!");
+  bothCollPosition = collPosOnX && collPosOnY;
+
+  bothCollPosition ? console.log("Collision") : console.log("Not Collision!");
 };
 
 const eventClick = (e) => {
