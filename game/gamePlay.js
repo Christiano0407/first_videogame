@@ -1,5 +1,5 @@
 //** === Video Game Javascript ===  */
-//**TODO === === === cONST & Variable === === ===  */
+//**TODO === === === CONST & Variable === === ===  */
 const canvas = document.querySelector(`#game`);
 const gameCTX = canvas.getContext(`2d`);
 const btnRight = document.querySelector("#right");
@@ -10,13 +10,20 @@ const playerPosition = {
   x: undefined,
   y: undefined,
 };
+const giftPosition = {
+  x: undefined,
+  y: undefined,
+};
 let canvasSize;
 let elementSize;
 let map;
 let rowMap;
 let colMap;
+let positionOnX;
+let positionOnY;
+let bothPosition;
 
-//*! === === === === CODE === === === ===  === === === VideoGame === */
+//*TODO === === === === CODE === === === ===  === === === VideoGame === */
 
 const setCanvasSize = () => {
   window.innerHeight > window.innerWidth
@@ -30,7 +37,7 @@ const setCanvasSize = () => {
 
   startGame();
 };
-
+//*! === === === START GAME === === ===  */
 const startGame = () => {
   gameCTX.font = elementSize + "px Arial";
   gameCTX.textAlign = "end";
@@ -58,6 +65,13 @@ const startGame = () => {
           // console.log({ playerPosition });
         }
       }
+      //const positionPlayer = playerPosition.x + playerPosition.y;
+
+      if (col === "I") {
+        giftPosition.x = posX;
+        giftPosition.y = posY;
+        //console.log(giftPosition);
+      }
 
       gameCTX.fillText(emoji, posX, posY);
     });
@@ -77,6 +91,11 @@ const startGame = () => {
 
 const movePlayer = () => {
   gameCTX.fillText(emojis["PLAYER"], playerPosition.x, playerPosition.y);
+  positionOnX = playerPosition.x + giftPosition.x;
+  positionOnY = playerPosition.y + giftPosition.y;
+  bothPosition = positionOnX + positionOnY;
+
+  bothPosition ? console.log("Collision") : console.log("Error!");
 };
 
 const eventClick = (e) => {
@@ -97,32 +116,49 @@ const eventClick = (e) => {
 
 const moveUp = () => {
   console.log("UpOn!");
-  playerPosition.y -= elementSize;
-  startGame();
+  if (playerPosition.y - elementSize <= elementSize - 1) {
+    console.log("Sorry!!");
+  } else {
+    playerPosition.y -= elementSize;
+    startGame();
+  }
 };
 btnUp.addEventListener("ArrowUp", moveUp);
 
 const moveLeft = () => {
   console.log("Left");
-  playerPosition.x -= elementSize;
-  startGame();
+  if (playerPosition.x - elementSize <= elementSize - 1) {
+    console.log("sorry!");
+  } else {
+    playerPosition.x -= elementSize;
+    startGame();
+  }
 };
 btnLeft.addEventListener("click", moveLeft);
 
 const moveRight = () => {
   console.log("Right");
-  playerPosition.x += elementSize;
-  startGame();
+  if (playerPosition.x + elementSize > canvasSize) {
+    console.log("Sorry!!");
+  } else {
+    playerPosition.x += elementSize;
+    startGame();
+  }
 };
 btnRight.addEventListener("click", moveRight);
 
 const moveDown = () => {
   console.log("Down");
-  playerPosition.y += elementSize;
-  startGame();
+  if (playerPosition.y + elementSize > canvasSize) {
+    console.log("Sorry!");
+  } else {
+    playerPosition.y += elementSize;
+    startGame();
+  }
 };
 btnDown.addEventListener("click", moveDown);
-//*? === === === Load Window === === ===  */
+
+//*! === === === Load Window === === ===  */
 window.addEventListener("resize", setCanvasSize);
 window.addEventListener("load", setCanvasSize);
 window.addEventListener("keydown", eventClick);
