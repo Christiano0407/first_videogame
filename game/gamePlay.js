@@ -22,6 +22,8 @@ let colMap;
 let collPosOnX;
 let collPosOnY;
 let bothCollPosition;
+let enemiesPosition = [];
+let enemiesCollision;
 
 //*TODO === === === === CODE === === === ===  === === === VideoGame === */
 
@@ -45,8 +47,9 @@ const startGame = () => {
   map = maps[0];
   rowMap = map.trim().split("\n");
   colMap = rowMap.map((row) => row.trim().split(""));
-  console.log({ map, rowMap, colMap });
+  //console.log({ map, rowMap, colMap });
 
+  enemiesPosition = [];
   gameCTX.clearRect(0, 0, canvasSize, canvasSize);
   // === Method ==
   colMap.forEach((row, rowInd) => {
@@ -73,6 +76,14 @@ const startGame = () => {
         //console.log(giftPosition);
       }
 
+      if (col === "X") {
+        enemiesPosition.push({
+          x: posX,
+          y: posY,
+        });
+        //console.log(enemiesPosition);
+      }
+
       gameCTX.fillText(emoji, posX, posY);
     });
   });
@@ -91,12 +102,21 @@ const startGame = () => {
 
 const movePlayer = () => {
   gameCTX.fillText(emojis["PLAYER"], playerPosition.x, playerPosition.y);
+
   collPosOnX = playerPosition.x.toFixed(3) === giftPosition.x.toFixed(3);
   collPosOnY = playerPosition.y.toFixed(3) === giftPosition.y.toFixed(3);
 
   bothCollPosition = collPosOnX && collPosOnY;
+  bothCollPosition ? console.log("Next Level") : console.log("Not Collision!");
 
-  bothCollPosition ? console.log("Collision") : console.log("Not Collision!");
+  enemiesCollision = enemiesPosition.find((enemy) => {
+    const enemiesCollisionX =
+      enemy.x.toFixed(3) === playerPosition.x.toFixed(3);
+    const enemiesCollisionY =
+      enemy.y.toFixed(3) === playerPosition.y.toFixed(3);
+    return enemiesCollisionX && enemiesCollisionY;
+  });
+  enemiesCollision ? console.log("Crash!!") : console.log("Not Crash!!");
 };
 
 const eventClick = (e) => {
