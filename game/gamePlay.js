@@ -24,6 +24,7 @@ let collPosOnY;
 let bothCollPosition;
 let enemiesPosition = [];
 let enemiesCollision;
+let level = 0;
 
 //*TODO === === === === CODE === === === ===  === === === VideoGame === */
 
@@ -44,7 +45,11 @@ const startGame = () => {
   gameCTX.font = elementSize + "px Arial";
   gameCTX.textAlign = "end";
 
-  map = maps[0];
+  map = maps[level];
+  if (!map) {
+    gameFinished();
+    return;
+  }
   rowMap = map.trim().split("\n");
   colMap = rowMap.map((row) => row.trim().split(""));
   //console.log({ map, rowMap, colMap });
@@ -100,6 +105,16 @@ const startGame = () => {
   } */
 };
 
+const youWin = () => {
+  console.log("Your Win & Up Next Level");
+  level++;
+  startGame();
+};
+
+const gameFinished = () => {
+  console.log("Winner!!");
+};
+
 const movePlayer = () => {
   gameCTX.fillText(emojis["PLAYER"], playerPosition.x, playerPosition.y);
 
@@ -107,7 +122,7 @@ const movePlayer = () => {
   collPosOnY = playerPosition.y.toFixed(3) === giftPosition.y.toFixed(3);
 
   bothCollPosition = collPosOnX && collPosOnY;
-  bothCollPosition ? console.log("Next Level") : console.log("Not Collision!");
+  bothCollPosition ? youWin() : console.log("Not Collision!");
 
   enemiesCollision = enemiesPosition.find((enemy) => {
     const enemiesCollisionX =
