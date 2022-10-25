@@ -100,10 +100,23 @@ canvas {
 }
 
 /* === Message === */
-.message {
+.div-Message {
     margin: 1rem auto;
+    width: 50%;
     padding: .5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.message {
     font-size: 2rem;
     font-weight: 700;
     color: #f2f2f2;
+}
+
+.span-message {
+    font-size: 1.8rem;
+    color: #fff;
+    font-weight: 700;
 }

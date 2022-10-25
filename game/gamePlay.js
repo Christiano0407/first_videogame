@@ -15,6 +15,7 @@ const giftPosition = {
   y: undefined,
 };
 const message = document.querySelector(`#idMessage`);
+const spanMessage = document.querySelector(`#spanMessage`);
 let canvasSize;
 let elementSize;
 let map;
@@ -122,6 +123,7 @@ const gameOver = () => {
     playerPosition.x = undefined;
     playerPosition.y = undefined;
     message.innerHTML = `Your Lose!`;
+     spanMessage.innerHTML = `${lifes}`;
     level = 0;
     startGame();
     lifes = 3;
