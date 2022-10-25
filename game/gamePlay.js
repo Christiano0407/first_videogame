@@ -59,6 +59,8 @@ const startGame = () => {
 
   enemiesPosition = [];
   gameCTX.clearRect(0, 0, canvasSize, canvasSize);
+
+  showLives();
   // === Method ==
   colMap.forEach((row, rowInd) => {
     row.forEach((col, colInd) => {
@@ -123,11 +125,18 @@ const gameOver = () => {
     playerPosition.x = undefined;
     playerPosition.y = undefined;
     message.innerHTML = `Your Lose!`;
-     spanMessage.innerHTML = `${lifes}`;
     level = 0;
     startGame();
     lifes = 3;
   }
+};
+
+const showLives = () => {
+  const heartArray = Array(lifes).fill(emojis[`HEART`]);
+  spanMessage.innerHTML = ``;
+  heartArray.forEach((heart) => {
+    spanMessage.append(heart);
+  });
 };
 
 const levelFiled = () => {

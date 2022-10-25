@@ -203,7 +203,7 @@ const levelCrash = () => {
 
 //** === Show Lifes */
 const showLifes = () => {
-  const heartsArray = Array(lifes).fill(emojis["Heart"]); //> Super Array
+  const heartsArray = Array(lifes).fill(emojis["HEART"]); //> Super Array
   //spanMessage.innerHTML = heartsArray;
   //heartsArray.forEach((heart) => (spanMessage.innerHTML = heart));
   spanMessage.innerHTML = ""; // => Clear Before
