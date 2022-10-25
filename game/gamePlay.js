@@ -16,6 +16,7 @@ const giftPosition = {
 };
 const message = document.querySelector(`#idMessage`);
 const spanMessage = document.querySelector(`#spanMessage`);
+const timer = document.querySelector(`#timer`);
 let canvasSize;
 let elementSize;
 let map;

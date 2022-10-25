@@ -120,3 +120,18 @@ canvas {
     color: #fff;
     font-weight: 700;
 }
+
+/* === Timer === */
+.divTimer {
+    margin: 1rem auto;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+.span-timer {
+    font-size: 2.6rem;
+    color: #f2f2f2;
+    font-weight: 700;
+}
