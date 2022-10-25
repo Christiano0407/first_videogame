@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 body {
     width: 100%;
     background-color: purple;
@@ -93,4 +97,13 @@ canvas {
     background-color: #feff9d;
     /* padding: 1rem; */
     border-radius: .5rem;
+}
+
+/* === Message === */
+.message {
+    margin: 1rem auto;
+    padding: .5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f2f2f2;
 }

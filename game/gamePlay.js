@@ -14,6 +14,7 @@ const giftPosition = {
   x: undefined,
   y: undefined,
 };
+const message = document.querySelector(`#idMessage`);
 let canvasSize;
 let elementSize;
 let map;
@@ -25,6 +26,7 @@ let bothCollPosition;
 let enemiesPosition = [];
 let enemiesCollision;
 let level = 0;
+let lifes = 3;
 
 //*TODO === === === === CODE === === === ===  === === === VideoGame === */
 
@@ -115,6 +117,30 @@ const gameFinished = () => {
   console.log("Winner!!");
 };
 
+const gameOver = () => {
+  if (lifes === 0) {
+    playerPosition.x = undefined;
+    playerPosition.y = undefined;
+    message.innerHTML = `Your Lose!`;
+    level = 0;
+    startGame();
+    lifes = 3;
+  }
+};
+
+const levelFiled = () => {
+  console.log("Crash");
+  if (lifes > 0) {
+    playerPosition.x = undefined;
+    playerPosition.y = undefined;
+    lifes--;
+    console.log(lifes);
+  }
+  if (lifes <= 0) {
+    gameOver();
+  }
+};
+
 const movePlayer = () => {
   gameCTX.fillText(emojis["PLAYER"], playerPosition.x, playerPosition.y);
 
@@ -131,7 +157,7 @@ const movePlayer = () => {
       enemy.y.toFixed(3) === playerPosition.y.toFixed(3);
     return enemiesCollisionX && enemiesCollisionY;
   });
-  enemiesCollision ? console.log("Crash!!") : console.log("Not Crash!!");
+  enemiesCollision ? levelFiled() : console.log("Not Crash!");
 };
 
 const eventClick = (e) => {
